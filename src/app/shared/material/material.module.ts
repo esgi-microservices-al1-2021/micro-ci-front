@@ -6,6 +6,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 const ANGULAR_MATERIAL_MODULES = [
@@ -15,7 +18,12 @@ const ANGULAR_MATERIAL_MODULES = [
   MatListModule,
   MatCardModule,
   MatTableModule,
-  MatTabsModule
+  MatGridListModule,
+  MatMenuModule,
+  MatTabsModule,
+  MatCardModule,
+  MatIconModule,
+  MatButtonModule
 ];
 
 @NgModule({
