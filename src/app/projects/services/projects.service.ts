@@ -19,4 +19,11 @@ export class ProjectsService {
   getById(projectId: string): Observable<Project> {
     return of({id: 'az123', name: 'project1'});
   }
+
+  /* TODO
+    - getAllByPage -> Add page support
+    - create
+    - update
+    - delete
+   */
 }

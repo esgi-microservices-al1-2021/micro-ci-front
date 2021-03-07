@@ -3,6 +3,7 @@ import {SharedModule} from '../shared';
 import {ProjectsListComponent} from './components/projects-list/projects-list.component';
 import {ProjectsContainer} from './containers/list/projects.container';
 import {DetailsContainer} from './containers/details/details.container';
+import {CommandsModule} from '../commands';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import {DetailsContainer} from './containers/details/details.container';
     DetailsContainer
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    CommandsModule
   ]
 })
 export class ProjectsModule { }
