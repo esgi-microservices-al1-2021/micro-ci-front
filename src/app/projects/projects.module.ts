@@ -4,6 +4,7 @@ import {ProjectsListComponent} from './components/projects-list/projects-list.co
 import {ProjectsContainer} from './containers/list/projects.container';
 import {DetailsContainer} from './containers/details/details.container';
 import {CommandsModule} from '../commands';
+import {NotificationsModule} from '../notifications';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {CommandsModule} from '../commands';
   ],
   imports: [
     SharedModule,
-    CommandsModule
+    CommandsModule,
+    NotificationsModule
   ]
 })
 export class ProjectsModule { }
