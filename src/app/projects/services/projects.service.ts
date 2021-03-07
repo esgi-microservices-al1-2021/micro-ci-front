@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Project} from '../models/project.model';
 import {Observable, of} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
@@ -8,9 +8,15 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ProjectsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) {}
 
-  getProjects(): Observable<Project[]> {
+  getAllByPage(): Observable<Project[]> {
     return of([{id: 'az123', name: 'project1'}]);
+  }
+
+  getById(projectId: string): Observable<Project> {
+    return of({id: 'az123', name: 'project1'});
   }
 }

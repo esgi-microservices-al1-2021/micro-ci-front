@@ -21,7 +21,7 @@ export class ProjectsContainer implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.isLoading = true;
-    this.projectsService.getProjects()
+    this.projectsService.getAllByPage()
       .pipe(
         finalize(() => this.isLoading = false),
         takeUntil(this.destroy$)
