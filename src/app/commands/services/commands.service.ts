@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {Command} from '../models/command.model';
+import {CommandsConfiguration} from '../models/commands.configuration.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,14 @@ export class CommandsService {
     private http: HttpClient
   ) { }
 
-  getAllByProjectId(projectId: string): Observable<Command[]> {
+  getConfigurationByProjectId(projectId: string): Observable<CommandsConfiguration> {
     return of();
   }
+
+  /* TODO
+    - getConfigurationByProjectId
+    - create
+    - update
+    - delete
+   */
 }

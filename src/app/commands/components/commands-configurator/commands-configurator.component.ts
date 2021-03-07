@@ -3,19 +3,19 @@ import {Project} from '../../../projects';
 import {CommandsService} from '../../services/commands.service';
 import {Subject} from 'rxjs';
 import {finalize, takeUntil} from 'rxjs/operators';
-import {Command} from '../../models/command.model';
+import {CommandsConfiguration} from '../../models/commands.configuration.model';
 
 @Component({
-  selector: 'ci-commands-list',
-  templateUrl: './commands-list.component.html',
-  styleUrls: ['./commands-list.component.scss']
+  selector: 'ci-commands-configurator',
+  templateUrl: './commands-configurator.component.html',
+  styleUrls: ['./commands-configurator.component.scss']
 })
-export class CommandsListComponent implements OnInit, OnDestroy {
+export class CommandsConfiguratorComponent implements OnInit, OnDestroy {
 
   @Input()
   project: Project;
 
-  commands: Command[];
+  commandsConfiguration: CommandsConfiguration;
   isLoading = false;
 
   private destroy$: Subject<boolean> = new Subject<boolean>();
@@ -26,13 +26,13 @@ export class CommandsListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.commandsService.getAllByProjectId(this.project.id)
+    this.commandsService.getConfigurationByProjectId(this.project.id)
       .pipe(
         finalize(() => this.isLoading = false),
         takeUntil(this.destroy$)
       )
       .subscribe(
-        value => this.commands = value,
+        value => this.commandsConfiguration = value,
         err => console.log(err)
       );
   }

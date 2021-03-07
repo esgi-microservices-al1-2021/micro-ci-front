@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared';
-import {CommandsListComponent} from './components/commands-list/commands-list.component';
+import {CommandsConfiguratorComponent} from './components/commands-configurator/commands-configurator.component';
 
 
 @NgModule({
   declarations: [
-    CommandsListComponent
+    CommandsConfiguratorComponent
   ],
   exports: [
-    CommandsListComponent
+    CommandsConfiguratorComponent
   ],
   imports: [
     SharedModule
