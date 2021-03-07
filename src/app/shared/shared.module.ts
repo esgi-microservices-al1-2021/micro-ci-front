@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from './material';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -10,6 +11,7 @@ import {MaterialModule} from './material';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
 
     MaterialModule,
     FlexLayoutModule
