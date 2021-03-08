@@ -1,0 +1,31 @@
+server {
+  listen $PORT;
+
+  root              /usr/share/nginx/html;
+
+  include           micro-ci/nginx-optimization.conf;
+  include           micro-ci/security-headers.conf;
+  include           micro-ci/gzip-compression.conf;
+
+  location / {
+    index           index.html;
+    try_files       $uri $uri/ /index.html =404;
+
+    expires         0;
+  }
+
+  # CSS and Javascript Cache
+  location ~* \.(?:css|js)$ {
+    expires         7d;
+    access_log      off;
+    #add_header      Cache-Control 'public';
+  }
+
+  # Assets & Media Cache
+  location ~* \.(?:jpg|jpeg|gif|png|ico|cur|gz|svg|svgz|heic|webp|tiff|mp3|mp4|m4a|aac|ogg|wav|ogv|mov|mpeg|avi|flv|ogv|wmv|webm|htc)$ {
+    expires         1M;
+    access_log      off;
+    #add_header      Cache-Control 'public';
+  }
+
+}

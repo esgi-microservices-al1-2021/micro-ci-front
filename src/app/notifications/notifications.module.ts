@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared';
-import { NotificationsConfiguratorComponent } from './components/notifications-configurator/notifications-configurator.component';
+import {NotificationsConfiguratorComponent} from './components/notifications-configurator/notifications-configurator.component';
 
 
 @NgModule({
