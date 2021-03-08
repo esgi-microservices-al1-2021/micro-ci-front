@@ -35,23 +35,10 @@ jobs:
       - name: Checkout Project
         uses: actions/checkout@v1
 
-      - name: Heroku Login
-        uses: actions/heroku@master
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          args: container:login
-
-      - name: Heroku Build & Push Docker Image
-        uses: actions/heroku@master
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        with:
-          args: container:push -a micro-ci-al1 web
-
-      - name: Heroku Deploy to Production
-        uses: actions/heroku@master
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        with:
-          args: container:release -a micro-ci-al1 web
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: micro-ci-al1
+          heroku_email: "esp010@hotmail.fr"
+          usedocker: true
+          stack: "container"
