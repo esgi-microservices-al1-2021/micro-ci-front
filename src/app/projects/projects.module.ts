@@ -6,13 +6,15 @@ import {DetailsContainer} from './containers/details/details.container';
 import {CommandsModule} from '../commands';
 import {NotificationsModule} from '../notifications';
 import {SchedulerModule} from '../scheduler';
+import {ProjectDetailsComponent} from './components/project-details/project-details.component';
 
 
 @NgModule({
   declarations: [
     ProjectsListComponent,
     ProjectsContainer,
-    DetailsContainer
+    DetailsContainer,
+    ProjectDetailsComponent
   ],
   imports: [
     SharedModule,

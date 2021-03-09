@@ -5,7 +5,9 @@ import {DetailsContainer, ProjectsContainer} from './projects';
 const routes: Routes = [
   { path: '', redirectTo: '/projects', pathMatch: 'full' },
   { path: 'projects', component: ProjectsContainer },
-  { path: 'project/:id', component: DetailsContainer }
+  { path: 'projects/new', component: DetailsContainer, data: {inEditMode: true} },
+  { path: 'project/:id', component: DetailsContainer },
+  { path: 'project/:id/edit', component: DetailsContainer, data: {inEditMode: true} }
 ];
 
 @NgModule({

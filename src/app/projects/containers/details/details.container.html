@@ -1,5 +1,8 @@
-<p>details works!</p>
-
-<ci-commands-configurator [project]="project" #commandsConfigurator></ci-commands-configurator>
-<ci-notifications-configurator [project]="project" #notificationsConfigurator></ci-notifications-configurator>
-<ci-scheduler-configurator [project]="project" [inEditMode]="editMode" #schedulerConfigurator></ci-scheduler-configurator>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+  <ci-project-details fxFlex [(project)]="project" [inEditMode]="editMode"></ci-project-details>
+  <ci-commands-configurator fxFlex [project]="project" [inEditMode]="editMode" #commandsConfigurator></ci-commands-configurator>
+</div>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
+  <ci-notifications-configurator fxFlex [project]="project" [inEditMode]="editMode" #notificationsConfigurator></ci-notifications-configurator>
+  <ci-scheduler-configurator fxFlex [project]="project" [inEditMode]="editMode" #schedulerConfigurator></ci-scheduler-configurator>
+</div>

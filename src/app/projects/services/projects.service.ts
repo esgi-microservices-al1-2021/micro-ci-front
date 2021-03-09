@@ -17,6 +17,7 @@ export class ProjectsService {
   }
 
   getById(projectId: string): Observable<Project> {
+    console.log(projectId);
     return of({id: 'az123', name: 'project1'});
   }
 
