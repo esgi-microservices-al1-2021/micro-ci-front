@@ -1,5 +1,5 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Subject} from 'rxjs';
+import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Observable, of, Subject} from 'rxjs';
 import {Project} from '../../../projects';
 import {SchedulerConfiguration} from '../../models/scheduler.configuration.model';
 import {SchedulerService} from '../../services/scheduler.service';
@@ -10,10 +10,10 @@ import {finalize, takeUntil} from 'rxjs/operators';
   templateUrl: './scheduler-configurator.component.html',
   styleUrls: ['./scheduler-configurator.component.scss']
 })
-export class SchedulerConfiguratorComponent implements OnInit, OnDestroy {
+export class SchedulerConfiguratorComponent implements OnChanges, OnDestroy {
 
-  @Input()
-  project: Project;
+  @Input() project: Project;
+  @Input() inEditMode: boolean;
 
   schedulerConfiguration: SchedulerConfiguration;
 
@@ -25,7 +25,7 @@ export class SchedulerConfiguratorComponent implements OnInit, OnDestroy {
     private schedulerService: SchedulerService
   ) { }
 
-  ngOnInit(): void {
+  ngOnChanges({project, inEditMode}: SimpleChanges): void {
     this.isLoading = true;
     this.schedulerService.getSchedulerConfigurationByProjectId(this.project.id)
       .pipe(
@@ -43,4 +43,8 @@ export class SchedulerConfiguratorComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  saveOrUpdate(project: Project): Observable<SchedulerConfiguration> {
+    console.log('call schedulerService');
+    return of();
+  }
 }

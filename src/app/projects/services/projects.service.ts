@@ -20,10 +20,8 @@ export class ProjectsService {
     return of({id: 'az123', name: 'project1'});
   }
 
-  /* TODO
-    - getAllByPage -> Add page support
-    - create
-    - update
-    - delete
-   */
+  saveOrUpdate(project: Project): Observable<Project> {
+    console.log('saveOrUpdate project');
+    return of({id: 'test', name: 'test'});
+  }
 }

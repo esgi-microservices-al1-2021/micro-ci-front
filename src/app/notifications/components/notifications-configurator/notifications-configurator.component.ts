@@ -1,8 +1,8 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {Project} from '../../../projects';
 import {NotificationConfiguration} from '../../models/notification.configuration.model';
 import {NotificationsService} from '../../services/notifications.service';
-import {Subject} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {finalize, takeUntil} from 'rxjs/operators';
 
 @Component({
@@ -10,10 +10,10 @@ import {finalize, takeUntil} from 'rxjs/operators';
   templateUrl: './notifications-configurator.component.html',
   styleUrls: ['./notifications-configurator.component.scss']
 })
-export class NotificationsConfiguratorComponent implements OnInit, OnDestroy {
+export class NotificationsConfiguratorComponent implements OnChanges, OnDestroy {
 
-  @Input()
-  project: Project;
+  @Input() project: Project;
+  @Input() inEditMode: boolean;
 
   notificationConfiguration: NotificationConfiguration;
 
@@ -25,7 +25,7 @@ export class NotificationsConfiguratorComponent implements OnInit, OnDestroy {
     private notificationsService: NotificationsService
   ) { }
 
-  ngOnInit(): void {
+  ngOnChanges({project, inEditMode}: SimpleChanges): void {
     this.isLoading = true;
     this.notificationsService.getConfigurationByProjectId(this.project.id)
       .pipe(
@@ -41,5 +41,10 @@ export class NotificationsConfiguratorComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.complete();
+  }
+
+  saveOrUpdate(project: Project): Observable<NotificationConfiguration> {
+    console.log('call notificationsService');
+    return of();
   }
 }

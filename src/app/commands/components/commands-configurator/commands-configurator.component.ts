@@ -1,7 +1,7 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {Project} from '../../../projects';
 import {CommandsService} from '../../services/commands.service';
-import {Subject} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {finalize, takeUntil} from 'rxjs/operators';
 import {CommandsConfiguration} from '../../models/commands.configuration.model';
 
@@ -10,10 +10,10 @@ import {CommandsConfiguration} from '../../models/commands.configuration.model';
   templateUrl: './commands-configurator.component.html',
   styleUrls: ['./commands-configurator.component.scss']
 })
-export class CommandsConfiguratorComponent implements OnInit, OnDestroy {
+export class CommandsConfiguratorComponent implements OnChanges, OnDestroy {
 
-  @Input()
-  project: Project;
+  @Input() project: Project;
+  @Input() inEditMode: boolean;
 
   commandsConfiguration: CommandsConfiguration;
   isLoading = false;
@@ -24,7 +24,7 @@ export class CommandsConfiguratorComponent implements OnInit, OnDestroy {
     private commandsService: CommandsService
   ) { }
 
-  ngOnInit(): void {
+  ngOnChanges({project, inEditMode}: SimpleChanges): void {
     this.isLoading = true;
     this.commandsService.getConfigurationByProjectId(this.project.id)
       .pipe(
@@ -40,6 +40,11 @@ export class CommandsConfiguratorComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.complete();
+  }
+
+  saveOrUpdate(project: Project): Observable<CommandsConfiguration> {
+    console.log('call commandsService');
+    return of();
   }
 
 }
