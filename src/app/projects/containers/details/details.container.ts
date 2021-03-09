@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild, ViewChildren} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ProjectsService} from '../../services/projects.service';
 import {Project} from '../../models/project.model';
 import {forkJoin, Subject} from 'rxjs';
@@ -6,7 +6,7 @@ import {map, switchMap, takeUntil} from 'rxjs/operators';
 import {SchedulerConfiguratorComponent} from '../../../scheduler/components/scheduler-configurator/scheduler-configurator.component';
 import {CommandsConfiguratorComponent} from '../../../commands/components/commands-configurator/commands-configurator.component';
 import {NotificationsConfiguratorComponent} from '../../../notifications/components/notifications-configurator/notifications-configurator.component';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   templateUrl: './details.container.html'
@@ -24,7 +24,8 @@ export class DetailsContainer implements OnInit, OnDestroy {
 
   constructor(
     private projectsService: ProjectsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -53,7 +54,12 @@ export class DetailsContainer implements OnInit, OnDestroy {
   }
 
   toggleEditMode(): void {
-    this.editMode = !this.editMode;
+    // this.editMode = !this.editMode;
+    if (!this.editMode) {
+      this.router.navigate(['project', this.project.id, 'edit']);
+    } else {
+      this.router.navigate(['project', this.project.id]);
+    }
   }
 
   saveOrUpdateProject(): void {
