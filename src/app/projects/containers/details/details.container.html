@@ -1,7 +1,7 @@
 <button mat-stroked-button *ngIf="!editMode" (click)="toggleEditMode()">Edit Mode</button>
 <div *ngIf="editMode">
   <button mat-stroked-button (click)="toggleEditMode()">Cancel</button>
-  <button mat-stroked-button color="primary">Save</button>
+  <button mat-stroked-button color="primary" (click)="saveOrUpdateProject()">Save</button>
 </div>
 
 <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
