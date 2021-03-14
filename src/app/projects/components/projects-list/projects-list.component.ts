@@ -11,7 +11,7 @@ export class ProjectsListComponent implements OnInit {
   @Input() projects: Project[];
   @Input() isLoading: boolean;
 
-  columns: string[] = ['id', 'name', 'actions'];
+  columns: string[] = ['id', 'name', 'status', 'actions'];
 
   constructor() { }
 

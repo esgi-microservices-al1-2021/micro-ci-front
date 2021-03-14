@@ -7,6 +7,7 @@ import {CommandsModule} from '../commands';
 import {NotificationsModule} from '../notifications';
 import {SchedulerModule} from '../scheduler';
 import {ProjectDetailsComponent} from './components/project-details/project-details.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -16,11 +17,11 @@ import {ProjectDetailsComponent} from './components/project-details/project-deta
     DetailsContainer,
     ProjectDetailsComponent
   ],
-  imports: [
-    SharedModule,
-    CommandsModule,
-    NotificationsModule,
-    SchedulerModule
-  ]
+    imports: [
+        SharedModule,
+        CommandsModule,
+        NotificationsModule,
+        SchedulerModule
+    ]
 })
 export class ProjectsModule { }

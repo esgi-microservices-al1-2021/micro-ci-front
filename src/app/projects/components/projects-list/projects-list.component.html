@@ -10,18 +10,33 @@
       <table mat-table [dataSource]="projects">
 
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> Id </th>
+          <th mat-header-cell *matHeaderCellDef> Id</th>
           <td mat-cell *matCellDef="let project"> {{project.id}} </td>
         </ng-container>
 
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <th mat-header-cell *matHeaderCellDef> Name</th>
           <td mat-cell *matCellDef="let project"> {{project.name}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Status</th>
+          <td mat-cell *matCellDef="let project">
+            <span class="material-icons">check</span>
+          </td>
+        </ng-container>
+
         <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Actions </th>
-          <td mat-cell *matCellDef="let project"> {{project.name}} </td>
+          <th mat-header-cell *matHeaderCellDef> Actions</th>
+          <td mat-cell *matCellDef="let project">
+            <span class="material-icons">not_started</span>
+            <a routerLink="/project/{{ project.id }}">
+              <span class="material-icons">edit</span>
+            </a>
+            <a routerLink="/project/{{ project.id }}/builds">
+              <span class="material-icons">fact_check</span>
+            </a>
+          </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>

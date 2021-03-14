@@ -12,7 +12,7 @@ export class BuildService {
     private http: HttpClient
   ) { }
 
-  getBuildsForProject(projectId: string): Observable<Build> {
+  getBuildsForProject(projectId: string): Observable<Build[]> {
     // TODO transform this method to return Page<Build>
     return of();
   }

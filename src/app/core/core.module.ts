@@ -1,20 +1,17 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {HeaderComponent} from './components/header/header.component';
 import {SharedModule} from '../shared';
-import {FooterComponent} from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent
+    HeaderComponent
   ],
   imports: [
     SharedModule
   ],
   exports: [
-    HeaderComponent,
-    FooterComponent
+    HeaderComponent
   ]
 })
 export class CoreModule {

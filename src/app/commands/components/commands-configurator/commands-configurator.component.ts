@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnDestroy, SimpleChanges} from '@angular/core';
 import {Project} from '../../../projects';
 import {CommandsService} from '../../services/commands.service';
 import {Observable, of, Subject} from 'rxjs';

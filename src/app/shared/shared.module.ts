@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MaterialModule} from './material';
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
 
     MaterialModule,
     FlexLayoutModule
